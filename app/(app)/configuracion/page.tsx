@@ -27,7 +27,7 @@ export default function ConfiguracionPage() {
       if (!user) return;
       setEmail(user.email ?? "");
 
-      const { data } = await supabase.from("profiles").select("*").eq("id", user.id).single();
+      const { data } = await supabase.from("profiles").select("*").eq("id", user.id).single<Profile>();
       if (data) {
         setProfile(data);
         setFullName(data.full_name ?? "");
