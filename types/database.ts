@@ -92,30 +92,36 @@ export interface FinancialGoal {
   due_date: string | null;
   created_at: string;
 }
-
 export interface Database {
   public: {
     Tables: {
-      profiles: { Row: Profile; Insert: Partial<Profile>; Update: Partial<Profile> };
-      goals: { Row: Goal; Insert: Partial<Goal>; Update: Partial<Goal> };
-      habits: { Row: Habit; Insert: Partial<Habit>; Update: Partial<Habit> };
-      habit_logs: { Row: HabitLog; Insert: Partial<HabitLog>; Update: Partial<HabitLog> };
+      profiles: { Row: Profile; Insert: Partial<Profile>; Update: Partial<Profile>; Relationships: [] };
+      goals: { Row: Goal; Insert: Partial<Goal>; Update: Partial<Goal>; Relationships: [] };
+      habits: { Row: Habit; Insert: Partial<Habit>; Update: Partial<Habit>; Relationships: [] };
+      habit_logs: { Row: HabitLog; Insert: Partial<HabitLog>; Update: Partial<HabitLog>; Relationships: [] };
       journal_entries: {
         Row: JournalEntry;
         Insert: Partial<JournalEntry>;
         Update: Partial<JournalEntry>;
+        Relationships: [];
       };
-      tasks: { Row: Task; Insert: Partial<Task>; Update: Partial<Task> };
+      tasks: { Row: Task; Insert: Partial<Task>; Update: Partial<Task>; Relationships: [] };
       transactions: {
         Row: Transaction;
         Insert: Partial<Transaction>;
         Update: Partial<Transaction>;
+        Relationships: [];
       };
       financial_goals: {
         Row: FinancialGoal;
         Insert: Partial<FinancialGoal>;
         Update: Partial<FinancialGoal>;
+        Relationships: [];
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }
